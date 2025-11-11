@@ -8,11 +8,13 @@ from pathlib import Path
 from telegram import Update, InputFile
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, ContextTypes, filters
 from yt_dlp import YoutubeDL
+from dotenv import load_dotenv
 
 # ✅ Agar ffmpeg PATH'da bo'lmasa, shu qo'shiladi
 os.environ["PATH"] += os.pathsep + r"C:\ffmpeg\bin"
 
-BOT_TOKEN = "8515666012:AAHeUhsXJl6jqdvqBHwARVEps-dn5BI6YCo"
+load_dotenv()
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 YOUTUBE_REGEX = re.compile(
     r"(https?://)?(www\.)?(youtube\.com/watch\?v=[\w\-]{11}|youtu\.be/[\w\-]{11})"
